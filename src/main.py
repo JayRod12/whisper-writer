@@ -89,9 +89,9 @@ class WhisperWriterApp(QObject):
         self.tray_icon.show()
 
     def cleanup(self):
-        if self.key_listener:
+        if getattr(self, 'key_listener', None):
             self.key_listener.stop()
-        if self.input_simulator:
+        if getattr(self, 'input_simulator', None):
             self.input_simulator.cleanup()
 
     def exit_app(self):
